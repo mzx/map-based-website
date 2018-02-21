@@ -5,6 +5,7 @@ import { Product } from '../store/product/product.model';
 import { Observable } from 'rxjs/Observable';
 import { AddProduct, ListProducts } from '../store/product/product.actions';
 import { AuthService } from '../services/auth.service';
+import { ProductState } from '../store/product/product.reducer';
 
 @Component({
   selector: 'app-products',
@@ -23,7 +24,9 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.products$ = this.store.select('products');
+    this.products$ = this.store
+      .select<ProductState>(state => state.productState)
+      .select<Product[]>(state => state.products);
   }
 
   addProductClick() {

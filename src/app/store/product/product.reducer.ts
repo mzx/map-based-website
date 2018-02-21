@@ -1,17 +1,22 @@
 import { Product } from './product.model';
 import { ProductActions, ProductActionTypes } from './product.actions';
 
-export function productsReducer(state: Product[] = [], action: ProductActions): Product[] {
+
+export interface ProductState {
+  products?: Product[];
+}
+
+export function productsReducer(state: ProductState = {products: []}, action: ProductActions): ProductState {
   switch (action.type) {
 
     case ProductActionTypes.LIST:
-      return [];
+      return state;
     case ProductActionTypes.LIST_SUCCESS:
-      return [...action.products];
+      return {...state, products: [...action.products]};
     case ProductActionTypes.ADD:
       return state;
     case ProductActionTypes.ADD_SUCCESS:
-      return [...state, action.product];
+      return {...state, products: [...state.products, action.product]};
     default:
       return state;
   }
