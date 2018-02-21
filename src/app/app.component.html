@@ -1,0 +1,40 @@
+<mat-toolbar color="primary">
+  <mat-icon routerLink="/">polymer</mat-icon>
+  <p routerLink="/">MAP BASED WEBSITE</p>
+
+  <div class="flex-spacer"></div>
+
+  <button mat-icon-button [matMenuTriggerFor]="appsMenu">
+    <mat-icon>apps</mat-icon>
+  </button>
+
+  <button mat-icon-button [matMenuTriggerFor]="loginMenu">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+
+  <mat-menu #appsMenu="matMenu">
+    <button mat-menu-item routerLink="/main">
+      <mat-icon>map</mat-icon>
+      <span>Main</span>
+    </button>
+    <button mat-menu-item routerLink="/products">
+      <mat-icon>shopping_basket</mat-icon>
+      <span>Products</span>
+    </button>
+
+  </mat-menu>
+
+  <mat-menu #loginMenu="matMenu">
+    <button mat-menu-item routerLink="/profile">
+      <mat-icon>face</mat-icon>
+      <span>Profile</span>
+    </button>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>directions_run</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
+
+</mat-toolbar>
+
+<router-outlet></router-outlet>

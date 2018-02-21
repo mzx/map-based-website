@@ -1,0 +1,42 @@
+<agm-map
+  [latitude]="lat"
+  [longitude]="lng"
+  [zoom]="zoom"
+  [disableDefaultUI]="false"
+  [zoomControl]="false"
+  (mapClick)="mapClicked($event)">
+
+  <agm-marker
+    *ngFor="let m of markers; let i = index"
+    (markerClick)="clickedMarker(m.label, i)"
+    [latitude]="m.lat"
+    [longitude]="m.lng"
+    [label]="m.label"
+    [markerDraggable]="m.draggable"
+    (dragEnd)="markerDragEnd(m, $event)">
+
+    <agm-info-window>
+      <mat-icon>shopping_basket</mat-icon>
+    </agm-info-window>
+
+  </agm-marker>
+
+  <agm-circle [latitude]="lat" [longitude]="lng -0.3"
+              [radius]="30000"
+              [fillColor]="'#336699'"
+              [circleDraggable]="true"
+              [editable]="true">
+  </agm-circle>
+
+</agm-map>
+
+<mat-card class="floatin-box">
+  <mat-form-field class="example-full-width">
+    <input type="text" placeholder="Search On Map" aria-label="Number" matInput [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of ['Product A','Product B','Product C']" [value]="option">
+        {{ option }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</mat-card>
