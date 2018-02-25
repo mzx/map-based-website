@@ -1,0 +1,42 @@
+@import '~@angular/material/theming';
+// Import your custom theme
+@import '../../../material-theme';
+
+.dropzone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-weight: 200;
+  height: 200px;
+  border: 2px dashed mat-color($custom-theme-primary);
+  border-radius: 5px;
+  background: white;
+  margin: 20px;
+
+  &.hovering {
+    border: 2px solid mat-color($custom-theme-accent);
+    color: #dadada;
+  }
+
+  .upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    height: 60px;
+    width: 120px;
+    display: inline-block;
+  }
+  .upload-btn-wrapper input[type=file] {
+    font-size: 2em;
+    position: relative;
+    width: 120px;
+    height: 60px;
+    left: -25px;
+    top: -30px;
+    opacity: 0;
+    //cursor: pointer!important;
+  }
+  mat-progress-bar{
+    width: 200px;
+  }
+}

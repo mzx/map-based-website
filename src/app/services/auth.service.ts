@@ -21,7 +21,7 @@ export class AuthService {
     this.angularFireAuth.auth.useDeviceLanguage();
 
     this.angularFireAuth.authState
-      .switchMap((a: any, i: number) => {
+      .switchMap((a: any) => {
         if (a) {
           // return Observable.of(null);
           return this.angularFireStore.doc<User>(`${USERS}/${a.uid}`).valueChanges();
@@ -29,16 +29,7 @@ export class AuthService {
           return Observable.of(null);
         }
       })
-      .subscribe(this.currentUser); // TODO pass subject to subscribe is preferred
-      // .subscribe((u: User) => {
-      //   this.currentUser.next(u);
-      // });
-
-    this.angularFireAuth.auth.onAuthStateChanged(state => {
-      // if (state && state.uid) {
-      //   this.createUserInDB(state);
-      // }
-    });
+      .subscribe(this.currentUser);
   }
 
   loginWithGoogle() {

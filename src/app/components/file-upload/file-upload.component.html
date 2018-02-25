@@ -1,0 +1,25 @@
+<div class="dropzone"
+     appDropZone
+     (hovered)="toggleHover($event)"
+     (dropped)="startUpload($event)"
+     [class.hovering]="isHovering">
+
+  <p>Drag and Drop a File</p>
+
+  <div class="upload-btn-wrapper">
+    <button mat-raised-button>Select File</button>
+    <input type="file"
+           name="myfile"
+           (change)="startUpload($event.target.files)"/>
+  </div>
+  <mat-card *ngIf="percentage | async as pct">
+    <mat-card-header>{{ pct | number }}%</mat-card-header>
+    <mat-progress-bar
+
+      mode="determinate" [value]="pct">
+    </mat-progress-bar>
+  </mat-card>
+</div>
+
+
+
