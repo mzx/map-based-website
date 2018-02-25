@@ -13,7 +13,7 @@ import { ViewProductComponent } from './view-product/view-product.component';
   imports: [
     CommonModule,
     ProviderRoutingModule,
-    MaterialImportsModule
+    MaterialImportsModule,
   ],
   declarations: [HomeComponent, ListProductsComponent, ListOrdersComponent, ListOutletsComponent, ViewProductComponent]
 })

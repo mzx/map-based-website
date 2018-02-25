@@ -5,6 +5,7 @@ import { ListProductsComponent } from './list-products/list-products.component';
 import { ListOrdersComponent } from './list-orders/list-orders.component';
 import { ListOutletsComponent } from './list-outlets/list-outlets.component';
 import { ViewProductComponent } from './view-product/view-product.component';
+import { FeedbackModule } from '../feedback/feedback.module';
 
 const routes: Routes = [
   {
@@ -17,7 +18,13 @@ const routes: Routes = [
       },
       {
         path: 'orders',
-        component: ListOrdersComponent
+        component: ListOrdersComponent,
+        children: [
+          {
+            path: '',
+            loadChildren: 'app/feedback/feedback.module#FeedbackModule'
+          },
+        ]
       },
       {
         path: 'outlets',

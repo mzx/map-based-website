@@ -8,7 +8,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialImportsModule } from './material-imports/material-imports.module';
 
 import 'hammerjs';
-import { RoutingModule } from './routing/routing.module';
 import { MainPageComponent } from './main-page/main-page.component';
 import { AgmCoreModule } from '@agm/core';
 import { AgmMapsPreviewComponent } from './agm-maps-preview/agm-maps-preview.component';
@@ -26,6 +25,7 @@ import { HomeComponent } from './home/home.component';
 import { EffectsModule } from '@ngrx/effects';
 import { ProductEffects } from './store/product/product.effects';
 import { ProductService } from './services/product.service';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -41,7 +41,7 @@ import { ProductService } from './services/product.service';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MaterialImportsModule,
-    RoutingModule,
+    AppRoutingModule,
     StoreModule.forRoot(reducers),
     StoreRouterConnectingModule.forRoot({
       stateKey: 'router' // name of reducer key
