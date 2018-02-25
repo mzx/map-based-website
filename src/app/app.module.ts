@@ -22,7 +22,6 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './store/index';
-import { ProductsComponent } from './products/products.component';
 import { HomeComponent } from './home/home.component';
 import { EffectsModule } from '@ngrx/effects';
 import { ProductEffects } from './store/product/product.effects';
@@ -34,7 +33,6 @@ import { ProductService } from './services/product.service';
     MainPageComponent,
     AgmMapsPreviewComponent,
     LoginComponent,
-    ProductsComponent,
     HomeComponent
   ],
   imports: [

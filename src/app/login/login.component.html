@@ -1,23 +1,37 @@
-<mat-card>
+<mat-card *ngIf="(authState | async)?.uid" class="profile-card">
+  <mat-card-content style="display: flex;flex-direction: column">
+    <div>
+      <img src="{{user?.profile?.photoUrl}}" class="profile-image"/>
+    </div>
+    <mat-list>
+      <h3 mat-subheader>personal</h3>
+      <mat-list-item>
+        <mat-icon mat-list-icon>vpn_key</mat-icon>
+        <p mat-line> {{(authState | async)?.uid}}</p>
+      </mat-list-item>
+
+      <mat-list-item>
+        <mat-icon mat-list-icon>email</mat-icon>
+        <p mat-line> {{user?.profile?.email}}</p>
+      </mat-list-item>
+
+
+      <mat-divider></mat-divider>
+      <h3 mat-subheader>Roles</h3>
+      <mat-list-item *ngFor="let r of userRoles">
+        <mat-icon mat-list-icon>perm_identity</mat-icon>
+        <p mat-line> {{r}}</p>
+
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="!(authState | async)?.uid" class="padding-10">
   <mat-card-title>
     LOGIN WITH EMAIL:
   </mat-card-title>
-
-  <mat-card-content *ngIf="(authState | async)?.uid" style="display: flex;flex-direction: column">
-    <div>
-      <img src="{{(authState | async)?.photoURL}}"/>
-    </div>
-    <label> {{(authState | async)?.uid}}</label>
-    <label> {{(authState | async)?.email}}</label>
-
-    <label>Roles:</label>
-    <mat-chip-list>
-      <mat-chip *ngFor="let r of userRoles">{{r}}</mat-chip>
-    </mat-chip-list>
-  </mat-card-content>
-
-  <mat-card-content *ngIf="!(authState | async)?.uid"
-                    style="display: flex;flex-direction: column">
+  <mat-card-content style="display: flex;flex-direction: column">
     <div class="example-container">
       <mat-tab-group>
         <mat-tab label="Login" class="example-container">
@@ -73,15 +87,10 @@
       </mat-tab-group>
     </div>
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button color="warn"
-            *ngIf="(authState | async)?.uid"
-            (click)="onLogout()">logout
-    </button>
-  </mat-card-actions>
+
 </mat-card>
 
-<mat-card *ngIf="!(authState | async)?.uid">
+<mat-card *ngIf="!(authState | async)?.uid" class="padding-10">
   <mat-card-title>OR CONNECT WITH SOCIAL:</mat-card-title>
   <mat-card-actions>
     <button

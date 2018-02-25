@@ -87,7 +87,7 @@ export class AuthService {
         console.log(user);
         if (!user || !user.roles) {
           const newUser = new User(state);
-          newUser.displayName = newUser.displayName || displayName;
+          newUser.profile.displayName = newUser.profile.displayName || displayName;
 
           // Classes not allowed on set
           userRef.set({...newUser}, {merge: true});

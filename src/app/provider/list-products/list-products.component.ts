@@ -1,18 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { AppState } from '../store';
-import { Product } from '../store/product/product.model';
+import { AuthService } from '../../services/auth.service';
 import { Observable } from 'rxjs/Observable';
-import { AddProduct, ListProducts } from '../store/product/product.actions';
-import { AuthService } from '../services/auth.service';
-import { ProductState } from '../store/product/product.reducer';
+import { Product } from '../../store/product/product.model';
+import { ProductState } from '../../store/product/product.reducer';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../store';
+import { AddProduct, ListProducts } from '../../store/product/product.actions';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  selector: 'app-list-products',
+  templateUrl: './list-products.component.html',
+  styleUrls: ['./list-products.component.scss']
 })
-export class ProductsComponent implements OnInit {
+export class ListProductsComponent implements OnInit {
+
   products$: Observable<Product[]>;
 
   constructor(protected store: Store<AppState>, protected auth: AuthService) {

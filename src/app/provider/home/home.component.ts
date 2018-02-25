@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-// TODO remove home component
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,7 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  navLinks = [
+    {path: 'products', label: 'Products'},
+    {path: 'orders', label: 'Orders'},
+    {path: 'outlets', label: 'Outlets'}
+  ];
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
